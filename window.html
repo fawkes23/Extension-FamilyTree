@@ -5,33 +5,45 @@
             <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
         </div>
         <div class="inline-drawer-content">
-            <!-- Family Tree Extension UI -->
-            <div class="familytree-ui">
-                <!-- Controls Section: Add Character, Relationship, Save/Load -->
-                <div class="controls">
-                    <div class="control-row">
-                        <input id="familytree_name_input" type="text" placeholder="Name" />
-                        <button id="familytree_add_char_btn"><i class="fa-solid fa-plus"></i> Add Character</button>
+            <div class="familytree-controls">
+                <div class="controls-section">
+                    <button id="addNodeBtn" class="btn btn-sm btn-secondary">Add Character</button>
+                    <button id="importBtn" class="btn btn-sm btn-secondary">Import JSON</button>
+                    <button id="exportBtn" class="btn btn-sm btn-secondary">Export JSON</button>
+                </div>
+                <div class="controls-section">
+                    <div id="selectionText">Selected: none</div>
+                    <div id="singleSelectionControls" style="display:none; margin-top:4px;">
+                        Gender: <button id="toggleGenderBtn" class="btn btn-sm btn-secondary">Toggle Gender</button>
+                        <button id="removeNodeBtn" class="btn btn-sm btn-secondary">Remove Character</button>
                     </div>
-                    <div class="control-row">
-                        <select id="familytree_parent_select">
-                            <option value="" disabled selected>Parent</option>
+                    <div id="relationControls" style="display:none; margin-top:4px;">
+                        Relationship:
+                        <select id="relationType">
+                            <option value="" disabled selected>Select relation</option>
+                            <option value="parent">Parent of</option>
+                            <option value="child">Child of</option>
+                            <option value="sibling">Sibling</option>
+                            <option value="spouse">Spouse</option>
                         </select>
-                        <span>is parent of</span>
-                        <select id="familytree_child_select">
-                            <option value="" disabled selected>Child</option>
-                        </select>
-                        <button id="familytree_add_rel_btn">Add</button>
-                    </div>
-                    <div class="control-row">
-                        <button id="familytree_save_btn"><i class="fa-solid fa-floppy-disk"></i> Save JSON</button>
-                        <button id="familytree_load_btn"><i class="fa-solid fa-folder-open"></i> Load JSON</button>
-                        <input id="familytree_file_input" type="file" accept="application/json" style="display:none;" />
+                        <button id="connectBtn" class="btn btn-sm btn-secondary">Connect</button>
+                        <button id="disconnectBtn" class="btn btn-sm btn-secondary" style="display:none;">Disconnect</button>
+                        <div id="closenessControl" style="display:none; margin-top:4px;">
+                            Closeness:
+                            <input type="range" id="closenessRange" min="0" max="100" value="50" />
+                            <span id="closenessValue">50</span>
+                            <span class="tooltip" title="Closeness indicates how emotionally close the relationship is (0 = strangers, 100 = extremely close).">&#9432;</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Tree Display Area -->
-                <div id="familytree_display" class="tree"></div>
             </div>
+            <div class="familytree-tree">
+                <div id="tree-container" style="position: relative; min-height: 400px; overflow: auto;">
+                    <svg id="tree-lines" width="100%" height="100%"></svg>
+                    <div id="nodes-layer"></div>
+                </div>
+            </div>
+            <input id="importFile" type="file" accept=".json,.png" multiple style="display:none;" />
         </div>
     </div>
 </div>

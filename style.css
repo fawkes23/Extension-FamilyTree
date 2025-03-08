@@ -1,205 +1,51 @@
 /* Family Tree Extension Styles */
-
-/* Container layout and controls */
-#familytree_settings .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.familytree-controls {
     margin-bottom: 10px;
 }
-#familytree_settings .control-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: wrap;
+.controls-section {
+    margin: 5px 0;
 }
-
-/* Form elements styling for dark theme */
-#familytree_settings .controls input,
-#familytree_settings .controls select,
-#familytree_settings .controls button {
-    background-color: #2e2e2e;
-    color: #fff;
-    border: 1px solid #555;
+.node {
+    position: absolute;
+    padding: 4px 8px;
+    border: 2px solid #333;
     border-radius: 4px;
-    padding: 3px 6px;
-}
-#familytree_settings .controls select {
-    max-width: 150px;
-}
-#familytree_settings .controls input {
-    max-width: 150px;
-}
-
-/* Family tree structure container */
-#familytree_settings .tree {
-    overflow: auto;  /* contain floats and enable scroll if needed */
-}
-/* Each generation level list */
-#familytree_settings .tree ul {
-    padding-top: 20px;
-    position: relative;
-    margin: 0;
-    padding-left: 0;
-}
-/* Tree nodes */
-#familytree_settings .tree li {
-    float: left;
+    background: #eee;
+    color: #000;
     text-align: center;
-    list-style-type: none;
-    position: relative;
-    padding: 20px 5px 0 5px;
+    max-width: 120px;
+    word-wrap: break-word;
+    cursor: pointer;
+    user-select: none;
 }
-/* Connector lines (horizontal and vertical lines connecting nodes) */
-#familytree_settings .tree li::before,
-#familytree_settings .tree li::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 50%;
-    border-top: 1px solid #ccc;
-    width: 50%;
-    height: 20px;
+.male {
+    border-color: #007bff;
 }
-#familytree_settings .tree li::after {
-    right: auto;
-    left: 50%;
-    border-left: 1px solid #ccc;
+.female {
+    border-color: #e83e8c;
 }
-/* Hide connectors for single nodes (no siblings) */
-#familytree_settings .tree li:only-child::before,
-#familytree_settings .tree li:only-child::after {
-    display: none;
+.node .gender-symbol {
+    /* gender symbol will inherit color from parent class */
 }
-#familytree_settings .tree li:only-child {
-    padding-top: 0;
+.male .gender-symbol {
+    color: #007bff;
 }
-/* Remove half-lines from ends of connectors */
-#familytree_settings .tree li:first-child::before,
-#familytree_settings .tree li:last-child::after {
-    border: 0 none;
+.female .gender-symbol {
+    color: #e83e8c;
 }
-/* Rounded corner for connector joints */
-#familytree_settings .tree li:last-child::before {
-    border-right: 1px solid #ccc;
-    border-radius: 0 5px 0 0;
+.node.selected {
+    outline: 3px solid #fff;
 }
-#familytree_settings .tree li:first-child::after {
-    border-radius: 5px 0 0 0;
+.relation {
+    stroke: #aaa;
+    stroke-width: 2;
+    fill: none;
 }
-/* Vertical connector from parent to children */
-#familytree_settings .tree ul ul::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    border-left: 1px solid #ccc;
-    width: 0;
-    height: 20px;
+.relation.sibling {
+    stroke-dasharray: 5,5;
 }
-/* Person node appearance */
-#familytree_settings .tree a {
-    display: inline-block;
-    padding: 5px 10px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #444;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.tooltip {
+    cursor: help;
+    font-size: 0.9em;
+    margin-left: 4px;
 }
-/* Separate multiple root families */
-#familytree_settings .tree ul:not(:first-child) {
-    margin-top: 30px;
-}
-
-
-
-/*
-
-#familytree_settings .flex {
-    display: flex;
-}
-
-
-#audio_settings .flex.column {
-    flex-direction: column;
-}
-#audio_settings .flex.column-reverse {
-    flex-direction: column-reverse;
-}
-#audio_settings .flex.row {
-    flex-direction: row;
-}
-#audio_settings .flex.row-reverse {
-    flex-direction: row-reverse;
-}
-*/
-
-/* align-items: center;
-justify-content: flex-end;
-gap: 12px; */
-
-
-/* 
-#audio_settings .flex.align-center {
-    align-items: center;
-}
-#audio_settings .flex.justify-center {
-    justify-content: center;
-}
-#audio_settings .flex.justify-start {
-    justify-content: flex-start;
-}
-#audio_settings .flex.justify-end {
-    justify-content: flex-end;
-}
-
-#audio_settings .flex.gap-12 {
-    gap: 12px;
-}
-
-#audio_settings .btn-refresh {
-    width: 32px;
-    height: 32px;
-    border-radius: 12px;
-}
-
-#audio_settings .audio-container .audio-mute-button-muted {
-    color: red;
-}
-
-#audio_settings .audio-container {
-    padding: 3px 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    background-color: rgba(38, 38, 38, 0.5);
-    border: 1px rgb(75, 75, 75) solid;
-    border-radius: 10px;
-}
-
-#audio_settings .audio-container .audio-player-button {
-    position: relative;
-    height: 2rem;
-}
-
-#audio_settings .audio-container>.vol {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#audio_settings .audio-container>.vol>input {
-    width: 100%;
-}
-
-#audio_settings .audio-container>.playlist {
-    flex-grow: 1;
-}
-
-#audio_settings .audio-container>.playlist>select {
-    height: 100%;
-    margin: 0 !important;
-}*/
