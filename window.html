@@ -5,8 +5,32 @@
             <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
         </div>
         <div class="inline-drawer-content">
-            <div>
-                <b>Hello World</b>
+            <!-- Family Tree Extension UI -->
+            <div class="familytree-ui">
+                <!-- Controls Section: Add Character, Relationship, Save/Load -->
+                <div class="controls">
+                    <div class="control-row">
+                        <input id="familytree_name_input" type="text" placeholder="Name" />
+                        <button id="familytree_add_char_btn"><i class="fa-solid fa-plus"></i> Add Character</button>
+                    </div>
+                    <div class="control-row">
+                        <select id="familytree_parent_select">
+                            <option value="" disabled selected>Parent</option>
+                        </select>
+                        <span>is parent of</span>
+                        <select id="familytree_child_select">
+                            <option value="" disabled selected>Child</option>
+                        </select>
+                        <button id="familytree_add_rel_btn">Add</button>
+                    </div>
+                    <div class="control-row">
+                        <button id="familytree_save_btn"><i class="fa-solid fa-floppy-disk"></i> Save JSON</button>
+                        <button id="familytree_load_btn"><i class="fa-solid fa-folder-open"></i> Load JSON</button>
+                        <input id="familytree_file_input" type="file" accept="application/json" style="display:none;" />
+                    </div>
+                </div>
+                <!-- Tree Display Area -->
+                <div id="familytree_display" class="tree"></div>
             </div>
         </div>
     </div>

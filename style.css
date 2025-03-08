@@ -1,3 +1,119 @@
+/* Family Tree Extension Styles */
+
+/* Container layout and controls */
+#familytree_settings .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+#familytree_settings .control-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+/* Form elements styling for dark theme */
+#familytree_settings .controls input,
+#familytree_settings .controls select,
+#familytree_settings .controls button {
+    background-color: #2e2e2e;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 3px 6px;
+}
+#familytree_settings .controls select {
+    max-width: 150px;
+}
+#familytree_settings .controls input {
+    max-width: 150px;
+}
+
+/* Family tree structure container */
+#familytree_settings .tree {
+    overflow: auto;  /* contain floats and enable scroll if needed */
+}
+/* Each generation level list */
+#familytree_settings .tree ul {
+    padding-top: 20px;
+    position: relative;
+    margin: 0;
+    padding-left: 0;
+}
+/* Tree nodes */
+#familytree_settings .tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+}
+/* Connector lines (horizontal and vertical lines connecting nodes) */
+#familytree_settings .tree li::before,
+#familytree_settings .tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+#familytree_settings .tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+/* Hide connectors for single nodes (no siblings) */
+#familytree_settings .tree li:only-child::before,
+#familytree_settings .tree li:only-child::after {
+    display: none;
+}
+#familytree_settings .tree li:only-child {
+    padding-top: 0;
+}
+/* Remove half-lines from ends of connectors */
+#familytree_settings .tree li:first-child::before,
+#familytree_settings .tree li:last-child::after {
+    border: 0 none;
+}
+/* Rounded corner for connector joints */
+#familytree_settings .tree li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+}
+#familytree_settings .tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+}
+/* Vertical connector from parent to children */
+#familytree_settings .tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+}
+/* Person node appearance */
+#familytree_settings .tree a {
+    display: inline-block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #444;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Separate multiple root families */
+#familytree_settings .tree ul:not(:first-child) {
+    margin-top: 30px;
+}
+
+
+
 /*
 
 #familytree_settings .flex {
