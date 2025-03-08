@@ -1,0 +1,12 @@
+{
+    "display_name": "Family Tree",
+    "loading_order": 14,
+    "requires": [],
+    "optional": ["classify"],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Fawkes23",
+    "version": "0.1.0",
+    "homePage": "https://github.com/fawkes23/FamilyTree",
+    "auto_update": true
+}
